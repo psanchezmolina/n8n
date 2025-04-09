@@ -445,9 +445,9 @@ export interface IExecutionBase {
 	status: ExecutionStatus;
 	retryOf?: string;
 	retrySuccessId?: string;
-	startedAt: Date;
-	createdAt: Date;
-	stoppedAt?: Date;
+	startedAt: Date | string;
+	createdAt: Date | string;
+	stoppedAt?: Date | string;
 	workflowId?: string; // To be able to filter executions easily //
 }
 
@@ -954,6 +954,8 @@ export interface RootState {
 	endpointForm: string;
 	endpointFormTest: string;
 	endpointFormWaiting: string;
+	endpointMcp: string;
+	endpointMcpTest: string;
 	endpointWebhook: string;
 	endpointWebhookTest: string;
 	endpointWebhookWaiting: string;
@@ -1583,3 +1585,10 @@ export type MainPanelDimensions = Record<
 		relativeWidth: number;
 	}
 >;
+
+export interface LlmTokenUsageData {
+	completionTokens: number;
+	promptTokens: number;
+	totalTokens: number;
+	isEstimate: boolean;
+}
